@@ -163,3 +163,7 @@ patchldmseg/*.yaml
 
 # VSCode
 .vscode/
+
+# .egg
+*.egg-info/
+*.egg
