@@ -1,0 +1,44 @@
+model:
+  kernel_size: 3
+  padding: true
+  padding_mode: zeros
+  spatial_factor: 2
+  upd_conv: true
+  preactivation: true
+data:
+  augment: true
+  fg_prob: 1
+  multiclass_pred: true
+  resample: false
+trainer:
+  accelerator: auto
+  check_val_every_n_epoch: 5
+  detect_anomaly: false
+  devices: auto
+  enable_checkpointing: true
+  enable_progress_bar: true
+  enable_model_summary: true
+  fast_dev_run: false
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: 'norm'
+  inference_mode: true
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  limit_predict_batches: null
+  log_every_n_steps: 50
+  logger:
+    class_path: patchldmseg.utils.callbacks.Logger
+  max_epochs: -1
+  max_steps: -1
+  min_epochs: -1
+  num_nodes: 1
+  num_sanity_val_steps: 0
+  precision: 32-true
+  strategy: auto
+  use_distributed_sampler: false
+
+
+
+
+

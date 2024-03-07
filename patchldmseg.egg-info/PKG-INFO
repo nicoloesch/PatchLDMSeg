@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: patchldmseg
+Version: 1.0.0
+Summary: Official Pytorch implementation of the paper "Three-dimensional latent diffusion model for brain tumour segmentation"
+Author: Nico Loesch
+Author-email: nico.loesch@student.uts.edu.au
+License: private
+Keywords: None
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >3.10
+
+# PatchLDMSeg
+This is the official Pytorch implementation of the paper "Three-dimensional latent diffusion model for brain tumour segmentation"

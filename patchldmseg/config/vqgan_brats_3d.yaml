@@ -1,0 +1,62 @@
+# AE Config for 3D model
+model:
+  activation: 'SiLU'
+  attention_res: null
+  attention_heads: 1
+  act_args:
+    - false
+  channel_factor:
+    - 2
+    - 4
+  commitment_loss_weight: 0.25
+  discriminator_channels: 64
+  discriminator_layers: 3
+  discriminator_loss: 'hinge'
+  discriminator_start_epoch: 0
+  dropout: 0
+  ema_decay: 0.9999
+  embedding_dim: 8
+  gan_image_weight: 1.0
+  gan_volume_weight: 1.0
+  gan_feature_weight: 4.0
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: 'norm'
+  hidden_channels: 64
+  kernel_size: 3
+  learning_rate: 3e-5
+  norm: 'group'
+  num_res_blocks: 1
+  num_codes: 16384
+  out_channels: 4
+  padding: true
+  padding_mode: 'replicate'
+  perceptual_loss_weight: 4.0
+  pixel_loss: 'l1'
+  pixel_loss_weight: 4.0
+  preactivation: true
+  sample_every_n_steps: 1000
+  spatial_factor: 2
+  weight_decay: 0.0
+  z_channels: 4
+  use_khader: true
+  pos_emb: null
+data:
+  batch_size: 2
+  conditional_sampling: false
+  dataset_str: 'BraTS_2023'
+  dimensions: 3
+  in_channels: 4
+  num_train: -1
+  num_val: -1
+  num_test: -1
+  patches_per_subj: 10
+  patch_size: 64
+  patch_overlap: 32
+  brats_2023_subtask: "Glioma"
+  use_queue: true
+trainer:
+  gradient_clip_val: null 
+model_checkpoint:
+  monitor: loss/val_epoch
+task: AE
+    

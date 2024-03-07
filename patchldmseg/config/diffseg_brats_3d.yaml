@@ -1,0 +1,53 @@
+# Configuration for DiffSeg 3D
+model:
+  activation: 'SiLU'
+  act_args:
+    - false
+  attention_res:
+    - 8
+    - 16
+  attention_heads: 1
+  attention_ch_per_head: null
+  channel_factor:
+    - 1
+    - 2
+    - 4
+  concat_sc: true
+  conv_zero_init: false
+  diffusion_gradient_scale: 0.0
+  diffusion_log_var: true
+  diffusion_loss_type: SIMPLE
+  diffusion_mean_type: EPSILON
+  diffusion_noising: 'linear'
+  diffusion_steps: 1000
+  diffusion_var_type: FIXED_LARGE
+  dropout: 0
+  ema_decay: 0.9999
+  hidden_channels: 128
+  learning_rate: 2e-5
+  norm: 'ada_gn'
+  num_res_blocks: 3
+  out_channels: 4
+  sample_every_n_epoch: 250
+  pos_emb: 'sin'
+data:
+  augment: true
+  batch_size: 2
+  conditional_sampling: true
+  dataset_str: 'BraTS_2023'
+  dimensions: 3
+  in_channels: 4
+  num_train: -1
+  num_val: -1
+  num_test: -1
+  num_pred: -1
+  patches_per_subj: 10
+  patch_size: 64
+  patch_overlap: 128
+  brats_2023_subtask: 'Glioma'
+trainer:
+  precision: 16-mixed
+  inference_mode: false
+model_checkpoint:
+  monitor: loss/val_epoch
+task: SEG

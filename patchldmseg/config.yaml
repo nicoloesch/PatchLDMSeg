@@ -1,0 +1,140 @@
+# pytorch_lightning==2.0.5
+seed_everything: 123
+trainer:
+  accelerator: auto
+  strategy: auto
+  devices: auto
+  num_nodes: 1
+  precision: 16-mixed
+  logger: false
+  callbacks: null
+  fast_dev_run: false
+  max_epochs: 3
+  min_epochs: -1
+  max_steps: -1
+  min_steps: null
+  max_time: null
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  limit_predict_batches: null
+  overfit_batches: 0.0
+  val_check_interval: null
+  check_val_every_n_epoch: 1
+  num_sanity_val_steps: 0
+  log_every_n_steps: 1
+  enable_checkpointing: true
+  enable_progress_bar: true
+  enable_model_summary: true
+  accumulate_grad_batches: 1
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: norm
+  deterministic: null
+  benchmark: null
+  inference_mode: false
+  use_distributed_sampler: false
+  profiler: null
+  detect_anomaly: false
+  barebones: false
+  plugins: null
+  sync_batchnorm: false
+  reload_dataloaders_every_n_epochs: 0
+  default_root_dir: null
+data:
+  augment: true
+  batch_size: 2
+  conditional_sampling: true
+  dataset_str: BraTS_2023
+  dimensions: 3
+  in_channels: 4
+  patches_per_subj: 4
+  patch_overlap: 128
+  patch_size: 64
+  fg_prob: 1.0
+  num_test: -1
+  num_train: 2
+  num_val: 2
+  num_pred: -1
+  brats_2023_subtask: Glioma
+  pin_memory: true
+  use_queue: true
+  multiclass_pred: true
+  resample: false
+num_workers: 4
+diffusion: true
+pid: 0
+task: SEG
+datasets_root: /data/u24417317/datasets/
+logging_dir: /data/u24417317/lightning_logs/
+early_stopping:
+  monitor: loss/val_epoch
+  min_delta: 0.0
+  patience: 5
+  verbose: false
+  mode: min
+  strict: true
+  check_finite: true
+  stopping_threshold: null
+  divergence_threshold: null
+  check_on_train_epoch_end: null
+  log_rank_zero_only: false
+model_checkpoint:
+  project_name: Debug
+  dirpath: null
+  filename: '{epoch}'
+  monitor: loss/val_epoch
+  save_top_k: 1
+  save_last: true
+  mode: min
+  experiment_name: null
+ckpt_path: null
+model:
+  class_path: patchldmseg.model.lightning.DiffSeg
+  init_args:
+    activation: SiLU
+    act_args:
+    - false
+    attention_heads: 1
+    attention_res:
+    - 8
+    - 16
+    channel_factor:
+    - 1
+    - 2
+    concat_sc: true
+    conv_zero_init: false
+    diffusion_gradient_scale: 0.0
+    diffusion_log_var: true
+    diffusion_loss_type: HYBRID
+    diffusion_mean_type: EPSILON
+    diffusion_noising: linear
+    diffusion_steps: 10
+    diffusion_var_type: LEARNED_RANGE
+    diffusion_verbose: false
+    dropout: 0
+    hidden_channels: 128
+    kernel_size: 3
+    norm: ada_gn
+    num_res_blocks: 3
+    out_channels: 4
+    padding: true
+    padding_mode: zeros
+    preactivation: true
+    spatial_factor: 2
+    upd_conv: true
+    learning_rate: 2.0e-05
+    p_unconditional: 0.2
+    ema_decay: 0.0
+    weight_decay: 0.0
+    eta: 0.0
+    sample_every_n_epoch: 250
+    subsequence_length: null
+    num_encoding_steps: 5
+    attention_ch_per_head: null
+    ldm_ckpt: /data/u24417317/models/brats/brats23_vqgan/3d_64_none/epoch=99.ckpt
+    pos_emb: sin
+    iteration: 0
+    encoding: ddim
+    decoding: ddim
+    edict_weight: 0.93
+    encoding_class: 0
